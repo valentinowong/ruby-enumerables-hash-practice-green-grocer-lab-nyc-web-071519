@@ -43,5 +43,5 @@ end
 
 def checkout(cart, coupons)
   new_cart = consolidate_cart(cart)
-  new_cart.reduce
+  new_cart.reduce(0) {|memo,(k,v)| memo += v[:price]*v[:count] }
 end
