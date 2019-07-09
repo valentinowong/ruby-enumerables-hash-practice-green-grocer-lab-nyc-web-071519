@@ -42,7 +42,7 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  new_cart = consolidate_cart(cart)
-  # new_cart = apply_coupons(cart, coupons)
-  new_cart.reduce(0) {|memo,(k,v)| memo += v[:price]*v[:count] }
+  consolidated_cart = consolidate_cart(cart)
+  couponed_cart = apply_coupons(consolidated_cart, coupons)
+  couponed_cart.reduce(0) {|memo,(k,v)| memo += v[:price]*v[:count] }
 end
