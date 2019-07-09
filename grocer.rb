@@ -47,7 +47,7 @@ def checkout(cart, coupons)
   clearanced_cart = apply_clearance(couponed_cart)
   total = clearanced_cart.reduce(0) {|memo,(k,v)| memo += v[:price]*v[:count] }
   if total > 100
-    total = 0.1 * total
+    total = 0.9 * total
   end
   total
 end
