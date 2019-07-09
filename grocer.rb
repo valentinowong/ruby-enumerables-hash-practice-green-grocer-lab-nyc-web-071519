@@ -10,7 +10,6 @@ def apply_coupons(cart, coupons)
   new_cart = cart
   coupons.each do |coupon|
     item = coupon[:item]
-
     if !new_cart[item].nil? && new_cart[item][:count] >= coupon[:num]
       new_item = {"#{item} W/COUPON" => {
         :price => coupon[:cost] / coupon[:num],
@@ -18,13 +17,11 @@ def apply_coupons(cart, coupons)
         :count => coupon[:num]
         }
       }
-      
       if new_cart["#{item} W/COUPON"].nil?
         new_cart.merge!(new_item)
       else
         new_cart["#{item} W/COUPON"][:count] = new_cart["#{item} W/COUPON"][:count] + coupon[:num]
       end
-      
       new_cart[item][:count] -= coupon[:num]
     end
   end
