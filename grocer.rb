@@ -44,5 +44,6 @@ end
 def checkout(cart, coupons)
   consolidated_cart = consolidate_cart(cart)
   couponed_cart = apply_coupons(consolidated_cart, coupons)
-  couponed_cart.reduce(0) {|memo,(k,v)| memo += v[:price]*v[:count] }
+  clearanced_cart = apply_clearance(couponed_cart)
+  clearanced_cart.reduce(0) {|memo,(k,v)| memo += v[:price]*v[:count] }
 end
